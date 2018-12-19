@@ -19,12 +19,18 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/home'
+            redirect: '/index'
         },
         {
-            path: '/home',
-            name: 'home',
-            component: resolve => require(['@/views/Home.vue'], resolve)
+            path: '/',
+            component: resolve => require(['@/views/common/Home.vue'], resolve),
+            children:[
+                {
+                    path: '/index',
+                    component: resolve => require(['@/views/Home.vue'], resolve),
+                    meta: { title: '首页' }
+                },
+            ]
         },
         {
             path: '/about',

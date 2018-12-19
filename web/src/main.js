@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import {post,get} from './http'
+import common from './plugin/main'
+global.$_common=common;
 Vue.config.productionTip = false
 global.$_post=post;
 global.$_get=get;
