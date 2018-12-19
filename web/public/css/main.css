@@ -1601,10 +1601,10 @@ header .logo a {
 	padding: 0;
 	outline: 0;
 	border: none;
-	width: 60px;
-	height: 60px;
+	width: 168px;
+	height: 67px;
 	background: url("../images/logo.png") no-repeat center;
-	background-size: 60px 60px;
+	background-size: 100% 100%;
 	font: 0/0 a;
 	text-shadow: none;
 	color: transparent;
@@ -1638,9 +1638,9 @@ header .logo a {
 	}
 
 	header .logo a {
-		width: 54px;
+		width: 90px;
 		height: 54px;
-		background-size: 54px 54px;
+		background-size:100% 100%;
 	}
 
 }
@@ -2464,10 +2464,10 @@ header .logo a {
  *
  * ------------------------------------------------------------------- */
 footer {
-	padding-top: 9rem;
+	padding-top: 4rem;
 	padding-bottom: 3rem;
 	font-size: 1.5rem;
-	color: #8E8E8E;
+	color: #8E8E8E; background: #2b2b2b;
 }
 footer a,
 footer a:visited {

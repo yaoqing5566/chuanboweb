@@ -23,11 +23,11 @@ export default new Router({
         },
         {
             path: '/',
-            component: resolve => require(['@/views/common/Home.vue'], resolve),
+            component: resolve => require(['@/views/pages/common/Home.vue'], resolve),
             children:[
                 {
                     path: '/index',
-                    component: resolve => require(['@/views/Home.vue'], resolve),
+                    component: resolve => require(['@/views/pages/Home.vue'], resolve),
                     meta: { title: '首页' }
                 },
             ]
