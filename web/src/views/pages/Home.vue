@@ -1,9 +1,6 @@
 <template>
-    <div class="">
+    <div>
 
-
-        <!-- masonry
-        ================================================== -->
         <section id="bricks">
 
             <div class="row masonry">
@@ -31,7 +28,7 @@
                                                     <li><a href="#" >Naruto Uzumaki</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a href="single-standard.html" title="">Minimalism Never Goes Out of Style</a></h1>
+                                                <h1 class="slide-title"><a href="#/detail" title="">Minimalism Never Goes Out of Style</a></h1>
                                             </div>
 
                                         </div>
@@ -50,7 +47,7 @@
                                                     <li><a href="#">Sasuke Uchiha</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a href="single-standard.html" title="">Enhancing Your Designs with Negative Space</a></h1>
+                                                <h1 class="slide-title"><a href="#/detail" title="">Enhancing Your Designs with Negative Space</a></h1>
                                             </div>
 
                                         </div>
@@ -69,7 +66,7 @@
                                                     <li><a href="#" class="author">Naruto Uzumaki</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a href="single-standard.html" title="">Music Album Cover Designs for Inspiration</a></h1>
+                                                <h1 class="slide-title"><a href="#/detail" title="">Music Album Cover Designs for Inspiration</a></h1>
                                             </div>
 
                                         </div>
@@ -83,7 +80,7 @@
                     <article class="brick entry format-standard animate-this">
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/diagonal-building.jpg" alt="building">
                             </a>
                         </div>
@@ -98,7 +95,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">Just a Standard Format Post.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">Just a Standard Format Post.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -111,7 +108,7 @@
                     <article class="brick entry format-standard animate-this">
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/ferris-wheel.jpg" alt="ferris wheel">
                             </a>
                         </div>
@@ -126,7 +123,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">This Is Another Standard Format Post.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">This Is Another Standard Format Post.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -184,7 +181,7 @@
                     <article class="brick entry animate-this">
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/shutterbug.jpg" alt="Shutterbug">
                             </a>
                         </div>
@@ -199,7 +196,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">Photography Skills Can Improve Your Graphic Design.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">Photography Skills Can Improve Your Graphic Design.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -212,7 +209,7 @@
                     <article class="brick entry animate-this" >
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/usaf-rocket.jpg" alt="USAF rocket">
                             </a>
                         </div>
@@ -227,7 +224,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">The 10 Golden Rules of Clean Simple Design.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">The 10 Golden Rules of Clean Simple Design.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -237,45 +234,6 @@
 
                     </article> <!-- end article -->
 
-                    <article class="brick entry format-gallery group animate-this">
-
-                        <div class="entry-thumb">
-
-                            <div class="post-slider flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/gallery/work1.jpg">
-                                    </li>
-                                    <li>
-                                        <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/gallery/work2.jpg">
-                                    </li>
-                                    <li>
-                                        <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/gallery/work3.jpg">
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Branding</a>
-               				<a href="#">Wordpress</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="single-gallery.html">Workspace Design Trends and Ideas.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
 
                     <article class="brick entry format-link animate-this">
 
@@ -294,7 +252,7 @@
                     <article class="brick entry animate-this">
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/diagonal-pattern.jpg" alt="Pattern">
                             </a>
                         </div>
@@ -309,7 +267,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">You Can See Patterns Everywhere.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">You Can See Patterns Everywhere.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -350,7 +308,7 @@
                     <article class="brick entry animate-this">
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/lighthouse.jpg" alt="Lighthouse">
                             </a>
                         </div>
@@ -365,7 +323,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">Breathtaking Photos of Lighthouses.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">Breathtaking Photos of Lighthouses.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -378,7 +336,7 @@
                     <article class="brick entry animate-this">
 
                         <div class="entry-thumb">
-                            <a href="single-standard.html" class="thumb-link">
+                            <a href="#/detail" class="thumb-link">
                                 <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/liberty.jpg" alt="Liberty">
                             </a>
                         </div>
@@ -393,7 +351,7 @@
                			</span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="single-standard.html">Designing With Black and White.</a></h1>
+                                <h1 class="entry-title"><a href="#/detail">Designing With Black and White.</a></h1>
 
                             </div>
                             <div class="entry-excerpt">
@@ -445,18 +403,7 @@
 
         },
         methods:{
-            ssMasonryFolio(){
-                var containerBricks = $('.bricks-wrapper');
-                containerBricks.imagesLoaded( function() {
-                    containerBricks.masonry( {
-                        itemSelector: '.entry',
-                        columnWidth: '.grid-sizer',
-                        percentPosition: true,
-                        resize: true
-                    });
 
-                });
-            }
         },
         created(){
             let that=this;

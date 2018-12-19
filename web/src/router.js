@@ -23,19 +23,24 @@ export default new Router({
         },
         {
             path: '/',
-            component: resolve => require(['@/views/pages/common/Home.vue'], resolve),
+            component: resolve => require(['@/views/common/Home.vue'], resolve),
             children:[
                 {
                     path: '/index',
                     component: resolve => require(['@/views/pages/Home.vue'], resolve),
                     meta: { title: '首页' }
                 },
+                {
+                    path: '/detail',
+                    component: resolve => require(['@/views/pages/detail.vue'], resolve),
+                    meta: { title: '详情' }
+                },
             ]
         },
         {
             path: '/about',
             name: 'about',
-            component: resolve => require(['@/views/About.vue'], resolve)
+            component: resolve => require(['@/views/pages/About.vue'], resolve)
         }
     ]
 })
