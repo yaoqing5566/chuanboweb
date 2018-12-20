@@ -77,288 +77,26 @@
                         </div> <!-- end entry content -->
                     </div>
 
-                    <article class="brick entry format-standard animate-this">
-
+                    <article class="brick entry format-standard animate-this" v-for="item in tableData">
                         <div class="entry-thumb">
                             <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/diagonal-building.jpg" alt="building">
+                                <img :src="'/image/upload_news/'+item.news_image" alt="building">
                             </a>
                         </div>
-
                         <div class="entry-text">
                             <div class="entry-header">
-
                                 <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">Photography</a>
-               			</span>
+               			<!--<span class="cat-links">-->
+               				<!--<a href="#">Design</a>-->
+               				<!--<a href="#">Photography</a>-->
+               			<!--</span>-->
                                 </div>
-
-                                <h1 class="entry-title"><a href="#/detail">Just a Standard Format Post.</a></h1>
-
+                                <h1 class="entry-title"><a href="#/detail">{{item.news_title}}</a></h1>
                             </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
+                            <div class="entry-excerpt" v-if="item.news_subtitle">
+                                {{item.news_subtitle}}
                             </div>
                         </div>
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry format-standard animate-this">
-
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/ferris-wheel.jpg" alt="ferris wheel">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">UI</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="#/detail">This Is Another Standard Format Post.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-                    <!-- format audio here -->
-                    <article class="brick entry format-audio animate-this">
-
-                        <div class="entry-thumb">
-                            <a href="single-audio.html" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/concert.jpg" alt="concert">
-                            </a>
-
-                            <div class="audio-wrap">
-                                <audio id="player" src="" width="100%" height="42" controls="controls"></audio>
-                            </div>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">Music</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="single-audio.html">This Is a Audio Format Post.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- /article -->
-
-                    <article class="brick entry format-quote animate-this" >
-
-                        <div class="entry-thumb">
-                            <blockquote>
-                                <p>Good design is making something intelligible and memorable. Great design is making something memorable and meaningful.</p>
-
-                                <cite>Dieter Rams</cite>
-                            </blockquote>
-                        </div>
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry animate-this">
-
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/shutterbug.jpg" alt="Shutterbug">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Photography</a>
-               				<a href="#">html</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="#/detail">Photography Skills Can Improve Your Graphic Design.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry animate-this" >
-
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/usaf-rocket.jpg" alt="USAF rocket">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Branding</a>
-               				<a href="#">Mockup</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="#/detail">The 10 Golden Rules of Clean Simple Design.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-
-                    <article class="brick entry format-link animate-this">
-
-                        <div class="entry-thumb">
-                            <div class="link-wrap">
-                                <p>Looking for affordable &amp; reliable web hosting? We recommend Dreamhost.</p>
-                                <cite>
-                                    <a target="_blank" href="#">http://sc.chinaz.com</a>
-                                </cite>
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-
-                    <article class="brick entry animate-this">
-
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/diagonal-pattern.jpg" alt="Pattern">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">UI</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="#/detail">You Can See Patterns Everywhere.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry format-video animate-this">
-
-                        <div class="entry-thumb video-image">
-                            <a href="" data-lity>
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/ottawa-bokeh.jpg" alt="bokeh">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">Branding</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="single-video.html">This Is a Video Post Format.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry animate-this">
-
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/lighthouse.jpg" alt="Lighthouse">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Photography</a>
-               				<a href="#">Design</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="#/detail">Breathtaking Photos of Lighthouses.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
-                    </article> <!-- end article -->
-
-                    <article class="brick entry animate-this">
-
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
-                                <img src="http://demo.sc.chinaz.com/Files/DownLoad/moban/201709/moban2366/images/thumbs/liberty.jpg" alt="Liberty">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">Branding</a>
-               				<a href="#">html</a>
-               			</span>
-                                </div>
-
-                                <h1 class="entry-title"><a href="#/detail">Designing With Black and White.</a></h1>
-
-                            </div>
-                            <div class="entry-excerpt">
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-                            </div>
-                        </div>
-
                     </article> <!-- end article -->
 
                 </div> <!-- end brick-wrapper -->
@@ -367,19 +105,10 @@
 
             <div class="row">
 
-                <nav class="pagination">
-                    <span class="page-numbers prev inactive">Prev</span>
-                    <span class="page-numbers current">1</span>
-                    <a href="#" class="page-numbers">2</a>
-                    <a href="#" class="page-numbers">3</a>
-                    <a href="#" class="page-numbers">4</a>
-                    <a href="#" class="page-numbers">5</a>
-                    <a href="#" class="page-numbers">6</a>
-                    <a href="#" class="page-numbers">7</a>
-                    <a href="#" class="page-numbers">8</a>
-                    <a href="#" class="page-numbers">9</a>
-                    <a href="#" class="page-numbers next">Next</a>
-                </nav>
+                <div class="pagination">
+                    <el-pagination background @current-change="handleCurrentChange" :page-size="pageSize" layout="prev, pager, next" :total="count">
+                    </el-pagination>
+                </div>
 
             </div>
 
@@ -396,36 +125,47 @@
         name: 'home',
         data () {
             return {
-                dataTable:""
+                tableData: [],
+                pageIndex:1,
+                pageSize:10,
+                count:0,
+                type:1
             }
         },
         components: {
 
         },
         methods:{
-
+            init(){
+                this.$nextTick( () => {
+                    $_common.ssPreloader();
+                    $_common.ssMediaElementPlayer();
+                    $_common.ssFitVids();
+                    $_common.ssPrettyPrint();
+                    $_common.ssAlertBoxes();
+                    $_common.ssSuperFish();
+                    $_common.ssMobileNav();
+                    $_common.ssMasonryFolio();
+                    $_common.ssBricksAnimate();
+                    $_common.ssFlexSlider();
+                    $_common.ssBackToTop();
+                })
+            },
+            handleCurrentChange(val) {
+                this.pageIndex = val;
+                this.getData();
+            },
+            getData(){
+                let that=this;
+                $_get('/Views/web/getNew.aspx?pageIndex='+that.pageIndex+'&pageSize='+that.pageSize+'&type='+that.type+'&name=').then(function (response) {
+                    that.tableData=response.data.list;
+                    that.count=response.data.count;
+                    that.init();
+                })
+            }
         },
         created(){
-            let that=this;
-            $_get('/Views/admin/readTopNews.aspx?pageIndex=1&pageSize=10&type=0').then(function (response) {
-                that.dataTable=response.data
-            })
-
-            this.$nextTick( () => {
-                $_common.ssPreloader();
-                $_common.ssMediaElementPlayer();
-                $_common.ssFitVids();
-                $_common.ssPrettyPrint();
-                $_common.ssAlertBoxes();
-                $_common.ssSuperFish();
-                $_common.ssMobileNav();
-                $_common.ssSearch();
-                $_common.ssMasonryFolio();
-                $_common.ssBricksAnimate();
-                $_common.ssFlexSlider();
-                $_common.ssBackToTop();
-            })
-
+            this.getData();
 
         }
     }

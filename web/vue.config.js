@@ -70,7 +70,7 @@ module.exports = {
         https: false,
         proxy: {// 设置代理
             '/': {
-                target: 'http://106.14.180.122:86/',
+                target: 'http://192.168.0.104:54992/',
                 changeOrigin: true,
                 ws: false
             }

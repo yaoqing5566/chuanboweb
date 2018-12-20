@@ -35,12 +35,12 @@
           <input type="submit" class="search-submit" value="Search">
         </form>
 
-        <a href="#" id="close-search" class="close-btn">Close</a>
+        <a href="javascript:;;" @click="closeSearch()" id="close-search" class="close-btn">Close</a>
 
       </div> <!-- end search wrap -->
 
       <div class="triggers">
-        <a class="search-trigger" href="#"><i class="fa fa-search"></i></a>
+        <a class="search-trigger" @click="showSearch()" href="javascript:;;"><i class="fa fa-search"></i></a>
         <a class="menu-toggle" href="#"><span>Menu</span></a>
       </div> <!-- end triggers -->
 
@@ -48,3 +48,35 @@
 
   </header> <!-- end header -->
 </template>
+
+<script>
+
+    export default {
+        data(){
+            return {
+
+            }
+        },
+        components:{
+        },
+        methods: {
+            showSearch(){
+                $("body").addClass('search-visible');
+                setTimeout(()=>{
+                    $('.search-wrap').find('.search-field').focus();
+                },100)
+            },
+            closeSearch(){
+                if($("body").hasClass('search-visible')){
+                    $("body").removeClass('search-visible');
+                    setTimeout(()=>{
+                        $('.search-wrap').find('.search-field').blur();
+                    },100)
+                }
+            }
+        },
+        created(){
+
+        }
+    }
+</script>

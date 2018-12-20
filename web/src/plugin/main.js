@@ -5,16 +5,11 @@ export default {
         statsDuration  : 4000,          // stats animation duration
         mailChimpURL   : 'http://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e65110b38d'
     },
-    $WIN:$(window),
     ssPreloader(){// Preloader
-        this.$WIN.on('load', function() {
-            // will first fade out the loading animation
-            $("#loader").fadeOut("slow", function(){
+        $("#loader").fadeOut("slow", function(){
+            // will fade out the whole DIV that covers the website.
+            $("#preloader").delay(300).fadeOut("slow");
 
-                // will fade out the whole DIV that covers the website.
-                $("#preloader").delay(300).fadeOut("slow");
-
-            });
         });
     },
     ssMediaElementPlayer(){
@@ -58,7 +53,7 @@ export default {
 
         if (toggleButton.is(':visible')) nav.addClass('mobile');
 
-        this.$WIN.resize(function() {
+        $(window).resize(function() {
             if (toggleButton.is(':visible')) nav.addClass('mobile');
             else nav.removeClass('mobile');
         });
@@ -70,81 +65,33 @@ export default {
             }
         });
     },
-    ssSearch(){
-        var searchWrap = $('.search-wrap');
-        var searchField = searchWrap.find('.search-field');
-        var closeSearch = $('#close-search');
-        var searchTrigger = $('.search-trigger');
-        var body = $('body');
-
-        searchTrigger.on('click', function(e){
-
-            e.preventDefault();
-            e.stopPropagation();
-            var $this = $(this);
-
-            body.addClass('search-visible');
-            setTimeout(function(){
-                $('.search-wrap').find('.search-field').focus();
-            }, 100);
-
-        });
-
-
-        closeSearch.on('click', function(){
-            var $this = $(this);
-
-            if(body.hasClass('search-visible')){
-                body.removeClass('search-visible');
-                setTimeout(function(){
-                    $('.search-wrap').find('.search-field').blur();
-                }, 100);
-            }
-        });
-
-        searchWrap.on('click',  function(e){
-            if( !$(e.target).is('.search-field') ) {
-                closeSearch.trigger('click');
-            }
-        });
-
-        searchField.on('click', function(e){
-            e.stopPropagation();
-        });
-
-        searchField.attr({placeholder: 'Type Your Keywords', autocomplete: 'off'});
-    },
     ssMasonryFolio(){
-        var containerBricks = $('.bricks-wrapper');
+       let containerBricks = $('.bricks-wrapper');
+       let el= {
+           itemSelector: '.entry',
+           columnWidth: '.grid-sizer',
+           percentPosition: true,
+           resize: true
+       }
 
-        containerBricks.imagesLoaded( function() {
+       containerBricks.imagesLoaded( function() {
+           containerBricks.masonry(el);
+       });
 
-            containerBricks.masonry( {
-                itemSelector: '.entry',
-                columnWidth: '.grid-sizer',
-                percentPosition: true,
-                resize: true
-            });
-
-        });
     },
     ssBricksAnimate(){
         var animateEl = $('.animate-this');
+        setTimeout(function() {
+            animateEl.each(function(ctr) {
+                var el = $(this);
+                setTimeout(function() {
+                    el.addClass('animated fadeInUp');
+                }, ctr * 200);
 
-        this.$WIN.on('load', function() {
-            setTimeout(function() {
-                animateEl.each(function(ctr) {
-                    var el = $(this);
+            });
+        }, 200);
 
-                    setTimeout(function() {
-                        el.addClass('animated fadeInUp');
-                    }, ctr * 200);
-
-                });
-            }, 200);
-        });
-
-        this.$WIN.on('resize', function() {
+        $(window).on('resize', function() {
             // remove animation classes
             animateEl.removeClass('animate-this animated fadeInUp');
         });
@@ -162,6 +109,31 @@ export default {
             randomize: false,
             touch: true,
         });
+
+        $('.post-slider').flexslider({
+            namespace: "flex-",
+            controlsContainer: "",
+            animation: 'fade',
+            controlNav: true,
+            directionNav: false,
+            smoothHeight: false,
+            slideshowSpeed: 7000,
+            animationSpeed: 600,
+            randomize: false,
+            touch: true,
+            start: function (slider) {
+                if (typeof slider.container === 'object') {
+                    slider.container.on("click", function (e) {
+                        if (!slider.animating) {
+                            slider.flexAnimate(slider.getTarget('next'));
+                        }
+                    });
+                }
+
+                $('.bricks-wrapper').masonry('layout');
+            }
+        });
+
     },
     ssSmoothScroll(){
         $('.smoothscroll').on('click', function (e) {
