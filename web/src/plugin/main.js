@@ -42,31 +42,6 @@ export default {
 
         });
     },
-    ssMobileNav(){
-        var toggleButton = $('.menu-toggle'),
-            nav = $('.main-navigation');
-
-        toggleButton.on('click', function(event){
-            event.preventDefault();
-
-            toggleButton.toggleClass('is-clicked');
-            nav.slideToggle();
-        });
-
-        if (toggleButton.is(':visible')) nav.addClass('mobile');
-
-        $(window).resize(function() {
-            if (toggleButton.is(':visible')) nav.addClass('mobile');
-            else nav.removeClass('mobile');
-        });
-
-        $('#main-nav-wrap li a').on("click", function() {
-            if (nav.hasClass('mobile')) {
-                toggleButton.toggleClass('is-clicked');
-                nav.fadeOut();
-            }
-        });
-    },
     ssMasonryFolio(){
        let containerBricks = $('.bricks-wrapper');
        let el= {
@@ -94,7 +69,7 @@ export default {
                 var el = $(this);
                 setTimeout(function() {
                     el.addClass('animated fadeInUp');
-                }, ctr * 200);
+                }, ctr * 100);
 
             });
         }, 200);

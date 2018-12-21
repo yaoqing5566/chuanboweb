@@ -127,7 +127,7 @@
             return {
                 tableData: [],
                 pageIndex:1,
-                pageSize:10,
+                pageSize:15,
                 count:0,
                 type:1
             }
@@ -137,7 +137,12 @@
         },
         methods:{
             goDetatl(item){
-                this.$router.push({path:'/detail',query:{id:item.news_id}})
+                if(item.news_type==2){
+                    window.open(item.news_ztlink)
+                }else {
+                    this.$router.push({path:'/detail',query:{id:item.news_id}})
+                }
+
                 console.log(item.news_id)
             },
             init(){
@@ -148,7 +153,6 @@
                     $_common.ssPrettyPrint();
                     $_common.ssAlertBoxes();
                     $_common.ssSuperFish();
-                    $_common.ssMobileNav();
                     $_common.ssMasonryFolio();
                     $_common.ssBricksAnimate();
                     $_common.ssFlexSlider();

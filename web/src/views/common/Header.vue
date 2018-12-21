@@ -42,7 +42,7 @@
 
       <div class="triggers">
         <a class="search-trigger" @click="showSearch()" href="javascript:;;"><i class="fa fa-search"></i></a>
-        <a class="menu-toggle" href="#"><span>Menu</span></a>
+        <a class="menu-toggle" :class="{'is-clicked':mobileNav}" @click="ssMobileNav()" href="javascript:;;"><span>Menu</span></a>
       </div> <!-- end triggers -->
 
     </div>
@@ -55,12 +55,16 @@
     export default {
         data(){
             return {
-
+                mobileNav:false,
             }
         },
         components:{
         },
         methods: {
+            ssMobileNav(){
+                this.mobileNav=!this.mobileNav;
+                $('.main-navigation').slideToggle();
+            },
             showSearch(){
                 $("body").addClass('search-visible');
                 setTimeout(()=>{
