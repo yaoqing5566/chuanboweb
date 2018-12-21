@@ -70,7 +70,7 @@ module.exports = {
         https: false,
         proxy: {// 设置代理
             '/': {
-                target: 'http://192.168.0.104:54992/',
+                target: 'http://chuanboweb.com',
                 changeOrigin: true,
                 ws: false
             }

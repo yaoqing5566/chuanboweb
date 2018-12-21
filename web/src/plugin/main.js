@@ -3,9 +3,11 @@ export default {
         defAnimation   : "fadeInUp",    // default css animation
         scrollDuration : 800,           // smoothscroll duration
         statsDuration  : 4000,          // stats animation duration
-        mailChimpURL   : 'http://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e65110b38d'
+        mailChimpURL   : 'http://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e65110b38d',
+        $grid:null
     },
     ssPreloader(){// Preloader
+
         $("#loader").fadeOut("slow", function(){
             // will fade out the whole DIV that covers the website.
             $("#preloader").delay(300).fadeOut("slow");
@@ -73,10 +75,16 @@ export default {
            percentPosition: true,
            resize: true
        }
-
+       let that=this;
        containerBricks.imagesLoaded( function() {
-           containerBricks.masonry(el);
+           console.log(that.cfg.$grid)
+           if(that.cfg.$grid){
+               containerBricks.masonry('destroy');
+           }
+           that.cfg.$grid=containerBricks.masonry(el);
+
        });
+
 
     },
     ssBricksAnimate(){

@@ -15,6 +15,7 @@ export default new Router({
             console.log("前进")
             return {x: 0, y: 0}
         }
+
     },
     routes: [
         {

@@ -78,8 +78,8 @@
                     </div>
 
                     <article class="brick entry format-standard animate-this" v-for="item in tableData">
-                        <div class="entry-thumb">
-                            <a href="#/detail" class="thumb-link">
+                        <div class="entry-thumb" @click="goDetatl(item)">
+                            <a href="javascript:;;" class="thumb-link">
                                 <img :src="'/image/upload_news/'+item.news_image" alt="building">
                             </a>
                         </div>
@@ -91,7 +91,7 @@
                				<!--<a href="#">Photography</a>-->
                			<!--</span>-->
                                 </div>
-                                <h1 class="entry-title"><a href="#/detail">{{item.news_title}}</a></h1>
+                                <h1 class="entry-title" @click="goDetatl(item)"><a href="javascript:;;">{{item.news_title}}</a></h1>
                             </div>
                             <div class="entry-excerpt" v-if="item.news_subtitle">
                                 {{item.news_subtitle}}
@@ -136,6 +136,10 @@
 
         },
         methods:{
+            goDetatl(item){
+                this.$router.push({path:'/detail',query:{id:item.news_id}})
+                console.log(item.news_id)
+            },
             init(){
                 this.$nextTick( () => {
                     $_common.ssPreloader();
@@ -152,7 +156,9 @@
                 })
             },
             handleCurrentChange(val) {
+                $("#loader,#preloader").show();
                 this.pageIndex = val;
+                document.body.scrollTop = 0
                 this.getData();
             },
             getData(){
