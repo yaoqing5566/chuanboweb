@@ -39,65 +39,65 @@
                 </div> <!-- end col-twelve -->
             </div> <!-- end row -->
 
-            <div class="comments-wrap">
-                <div id="comments" class="row">
-                    <div class="col-full">
+            <!--<div class="comments-wrap">-->
+                <!--<div id="comments" class="row">-->
+                    <!--<div class="col-full">-->
 
-                        <h3>全部评论（1）</h3>
+                        <!--<h3>全部评论（1）</h3>-->
 
-                        <!-- commentlist -->
-                        <ol class="commentlist">
+                        <!--&lt;!&ndash; commentlist &ndash;&gt;-->
+                        <!--<ol class="commentlist">-->
 
-                            <li class="depth-1">
+                            <!--<li class="depth-1">-->
 
-                                <div class="avatar">
-                                    <img width="50" height="50" class="avatar" src="images/shutterbug.jpg" alt="">
-                                </div>
+                                <!--<div class="avatar">-->
+                                    <!--<img width="50" height="50" class="avatar" src="images/shutterbug.jpg" alt="">-->
+                                <!--</div>-->
 
-                                <div class="comment-content">
+                                <!--<div class="comment-content">-->
 
-                                    <div class="comment-info">
-                                        <cite>Itachi Uchiha</cite>
+                                    <!--<div class="comment-info">-->
+                                        <!--<cite>Itachi Uchiha</cite>-->
 
-                                        <div class="comment-meta">
-                                            <time class="comment-time" datetime="2014-07-12T23:05">Jul 12, 2014 @ 23:05</time>
-                                            <span class="sep">/</span><a class="reply" href="#">Reply</a>
-                                        </div>
-                                    </div>
+                                        <!--<div class="comment-meta">-->
+                                            <!--<time class="comment-time" datetime="2014-07-12T23:05">Jul 12, 2014 @ 23:05</time>-->
+                                            <!--<span class="sep">/</span><a class="reply" href="#">Reply</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
 
-                                    <div class="comment-text">
-                                        <p>Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
-                                            facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.</p>
-                                    </div>
+                                    <!--<div class="comment-text">-->
+                                        <!--<p>Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,-->
+                                            <!--facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.</p>-->
+                                    <!--</div>-->
 
-                                </div>
+                                <!--</div>-->
 
-                            </li>
+                            <!--</li>-->
 
 
-                        </ol> <!-- Commentlist End -->
+                        <!--</ol> &lt;!&ndash; Commentlist End &ndash;&gt;-->
 
-                        <!-- respond -->
-                        <div class="respond">
+                        <!--&lt;!&ndash; respond &ndash;&gt;-->
+                        <!--<div class="respond">-->
 
-                            <h3>留下评论</h3>
+                            <!--<h3>留下评论</h3>-->
 
-                            <form name="contactForm" id="contactForm">
-                                <fieldset>
-                                    <div class="message form-field">
-                                        <textarea name="cMessage" id="cMessage" class="full-width" placeholder="请输入评论" ></textarea>
-                                    </div>
+                            <!--<form name="contactForm" id="contactForm">-->
+                                <!--<fieldset>-->
+                                    <!--<div class="message form-field">-->
+                                        <!--<textarea name="cMessage" id="cMessage" class="full-width" placeholder="请输入评论" ></textarea>-->
+                                    <!--</div>-->
 
-                                    <button type="submit" class="submit button-primary"> 发 布 </button>
+                                    <!--<button type="submit" class="submit button-primary"> 发 布 </button>-->
 
-                                </fieldset>
-                            </form> <!-- Form End -->
+                                <!--</fieldset>-->
+                            <!--</form> &lt;!&ndash; Form End &ndash;&gt;-->
 
-                        </div> <!-- Respond End -->
+                        <!--</div> &lt;!&ndash; Respond End &ndash;&gt;-->
 
-                    </div> <!-- end col-full -->
-                </div> <!-- end row comments -->
-            </div> <!-- end comments-wrap -->
+                    <!--</div> &lt;!&ndash; end col-full &ndash;&gt;-->
+                <!--</div> &lt;!&ndash; end row comments &ndash;&gt;-->
+            <!--</div> &lt;!&ndash; end comments-wrap &ndash;&gt;-->
 
         </section>
 

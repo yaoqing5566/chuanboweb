@@ -28,13 +28,12 @@
 
       <div class="search-wrap">
 
-        <form role="search" method="get" class="search-form" action="#">
+        <div class="search-form">
           <label>
             <span class="hide-content">Search for:</span>
-            <input type="search" class="search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+            <input type="search" class="search-field" v-model="keyword" placeholder="请输入您要搜索的关键字"  @keyup.enter="search()" value="" name="s" title="Search for:" autocomplete="off">
           </label>
-          <input type="submit" class="search-submit" value="Search">
-        </form>
+        </div>
 
         <a href="javascript:;;" @click="closeSearch()" id="close-search" class="close-btn">Close</a>
 
@@ -56,11 +55,17 @@
         data(){
             return {
                 mobileNav:false,
+                keyword:'',
             }
         },
         components:{
         },
         methods: {
+            search(){
+                let k=this.keyword;
+                this.$router.push({path:'/index?type='+this.$store.state.webType+'&keyword='+k})
+                this.closeSearch();
+            },
             ssMobileNav(){
                 this.mobileNav=!this.mobileNav;
                 $('.main-navigation').slideToggle();

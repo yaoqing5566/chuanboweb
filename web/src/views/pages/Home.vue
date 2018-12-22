@@ -106,7 +106,7 @@
             <div class="row">
 
                 <div class="pagination">
-                    <el-pagination background @current-change="handleCurrentChange" :page-size="pageSize" layout="prev, pager, next" :total="count">
+                    <el-pagination background @current-change="handleCurrentChange" :page-size="pageSize" layout="prev, pager, next" :total="count" :current-page.sync="pageIndex">
                     </el-pagination>
                 </div>
 
@@ -128,12 +128,23 @@
                 tableData: [],
                 pageIndex:1,
                 pageSize:15,
-                count:0,
-                type:1
+                keyword:'',
+                count:0
             }
         },
         components: {
 
+        },
+        mounted: function () {
+          console.log(111)
+        },
+        watch: {
+            $route() {
+                this.keyword=this.$route.query.keyword?this.$route.query.keyword:'';
+            },
+            keyword(){
+                this.getData();
+            }
         },
         methods:{
             goDetatl(item){
@@ -162,12 +173,13 @@
             handleCurrentChange(val) {
                 $("#loader,#preloader").show();
                 this.pageIndex = val;
+                this.$router.push({path:'/index',query:{type:this.$store.state.webType,pageIndex:val}})
                 document.body.scrollTop = 0
                 this.getData();
             },
             getData(){
                 let that=this;
-                $_get('/Views/web/getNew.aspx?pageIndex='+that.pageIndex+'&pageSize='+that.pageSize+'&type='+that.type+'&name=').then(function (response) {
+                $_get('/Views/web/getNew.aspx?pageIndex='+that.pageIndex+'&pageSize='+that.pageSize+'&type='+that.$store.state.webType+'&name='+that.keyword).then(function (response) {
                     that.tableData=response.data.list;
                     that.count=response.data.count;
                     that.init();
@@ -175,8 +187,16 @@
             }
         },
         created(){
+            if(this.$route.query.type){
+                this.$store.state.webType=this.$route.query.type;
+            }
+            if(this.$route.query.pageIndex){
+                this.pageIndex=parseInt(this.$route.query.pageIndex);
+            }
+            if(this.$route.query.keyword){
+                this.keyword=this.$route.query.keyword;
+            }
             this.getData();
-
         }
     }
 </script>
