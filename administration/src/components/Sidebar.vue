@@ -30,36 +30,11 @@
             return {
                 collapse: false,
                 items: [
-                  {
-                    icon: 'el-icon-edit-outline',
-                    index: '1',
-                    title: '首页',
-                    subs: [
-                      {
-                        index: 'banner',
-                        title: 'banner管理'
-                      },
-                        {
-                            index: 'reservations',
-                            title: '预约活动'
-                        }
-                    ]
-                  },{
+                 {
                     icon: 'el-icon-edit-outline',
                     index: 'news',
                     title: '情报站'
-                  },
-                    {
-                        icon: 'el-icon-edit-outline',
-                        index: '2',
-                        title: '资源站',
-                        subs: [
-                            {
-                                index: 'resource',
-                                title: '资源站管理'
-                            }
-                        ]
-                    }
+                  }
                 ]
             }
         },
