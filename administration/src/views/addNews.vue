@@ -22,8 +22,8 @@
                         <el-input v-model="ruleForm.news_author"></el-input>
                     </el-form-item>
                     <el-form-item label="封面图" prop="url">
-                        <a target="_blank" :href="ruleForm.news_image">
-                            <img style="width: 100px; height: 100px; vertical-align:bottom; margin-right: 10px" class="up-img-banner" :src="ruleForm.news_image" alt="">
+                        <a target="_blank" :href="ruleForm.news_image.lastIndexOf('http')>=0?ruleForm.news_image:('/image/upload_news/'+ruleForm.news_image)">
+                            <img style="width: 100px; height: 100px; vertical-align:bottom; margin-right: 10px" class="up-img-banner" :src="ruleForm.news_image.lastIndexOf('http')>=0?ruleForm.news_image:('/image/upload_news/'+ruleForm.news_image)" alt="">
                         </a>
                         <el-button type="primary" @click="uploadImg">选择图片</el-button>
                     </el-form-item>
@@ -107,7 +107,7 @@
                    _this.ruleForm.news_type=da.news_type+'';
                    _this.ruleForm.news_title=da.news_title;
                    _this.ruleForm.news_status=da.news_status;
-                   _this.ruleForm.news_image=da.news_image.lastIndexOf('http')>=0?da.news_image:('/image/upload_news/'+da.news_image);
+                   _this.ruleForm.news_image=da.news_image;
                    _this.ruleForm.new_content=da.new_content;
                    _this.ruleForm.news_author=da.news_author;
                    _this.ruleForm.webtype=da.webtype;
