@@ -27,29 +27,14 @@ export default new Router({
             meta: { title: '自述文件' },
             children:[
                 {
-                    path: '/banner',
-                    component: resolve => require(['./views/resource.vue'], resolve),
-                    meta: { title: 'banner列表',type:4 }
-                },
-                {
                     path: '/news',
                     component: resolve => require(['./views/news.vue'], resolve),
-                    meta: { title: '情报站' }
+                    meta: { title: '新闻' }
                 },
                 {
                     path: '/addNews',
                     component: resolve => require(['./views/addNews.vue'], resolve),
-                    meta: { title: '新建情报站' }
-                },
-                {
-                    path: '/resource',
-                    component: resolve => require(['./views/resource.vue'], resolve),
-                    meta: { title: '资源站管理',type:1 }
-                },
-                {
-                    path: '/reservations',
-                    component: resolve => require(['./views/reservations.vue'], resolve),
-                    meta: { title: '预约活动' }
+                    meta: { title: '新建新闻' }
                 }
 
             ]

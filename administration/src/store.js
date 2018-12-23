@@ -7,6 +7,7 @@ export default new Vuex.Store({
     state: {
         windowHeight: document.documentElement.clientHeight || document.body.clientHeight,
         windowWidth: document.documentElement.clientWidth || document.body.clientWidth,
+        userDetail:localStorage.getItem('ms_user')?JSON.parse(localStorage.getItem('ms_user')):''
     },
     mutations: {},
     actions: {},

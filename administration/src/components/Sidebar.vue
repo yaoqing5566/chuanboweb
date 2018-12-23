@@ -33,7 +33,7 @@
                  {
                     icon: 'el-icon-edit-outline',
                     index: 'news',
-                    title: '情报站'
+                    title: '新闻'
                   }
                 ]
             }

@@ -41,11 +41,6 @@
                     if (valid) {
                         let loginData={name:this.ruleForm.username,pwd:this.ruleForm.password};
                         let _this=this;
-                       //测试用
-//                      localStorage.setItem('ms_user', JSON.stringify({"id":1,"name":"admin","type":1,"sex":0}));
-//                      _this.$router.push('/index');
-
-
                         $_post('/Views/login.aspx',{
                           data:JSON.stringify(loginData)
                         }).then(function (response) {
@@ -56,9 +51,6 @@
                                 _this.$message.error(response.msg);
                             }
                         })
-
-
-
 
                     } else {
                         console.log('error submit!!');
