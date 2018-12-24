@@ -22,6 +22,7 @@
           <!--</li>-->
           <li><a href="#/index" title="">关于我们</a></li>
           <li><a href="#/index" title="">频道</a></li>
+          <li><a target="_blank" href="http://chuanboweb.com/administration/#/login" title="">管理</a></li>
           <li><a target="_blank" href="http://old.chuanboweb.com" title="">切换成旧版</a></li>
         </ul>
       </nav> <!-- end main-nav-wrap -->

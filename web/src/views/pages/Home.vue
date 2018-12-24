@@ -81,7 +81,8 @@
                     <article class="brick entry format-standard animate-this" v-for="item in tableData">
                         <div class="entry-thumb" @click="goDetatl(item)">
                             <a href="javascript:;;" class="thumb-link">
-                                <img :src="'/image/upload_news/'+item.news_image" alt="building">
+                                <img v-if="item.news_image.lastIndexOf('http')==-1" :src="'/image/upload_news/'+item.news_image" alt="building">
+                                <img v-else :src="item.news_image" alt="building">
                             </a>
                         </div>
                         <div class="entry-text">

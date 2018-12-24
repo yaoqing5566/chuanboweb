@@ -170,7 +170,7 @@ p.lead {
 	}
 }
 em, i, strong, b {
-	font-size: 1.7rem;
+	/*font-size: 1.7rem;*/
 	line-height: 3rem;
 	font-style: normal;
 	font-weight: normal;
@@ -2260,7 +2260,7 @@ header .logo a {
 
 #content-wrap .primary-content img {
 	max-width: 910px;
-	margin: 3rem 0 3rem -6rem;
+	/*margin: 3rem 0 3rem -6rem;*/
 }
 
 #content-wrap .primary-content img.pull-right {
