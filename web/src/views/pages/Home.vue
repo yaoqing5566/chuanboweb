@@ -1,4 +1,5 @@
 <template>
+
     <div>
 
         <section id="bricks">
@@ -153,7 +154,7 @@
                 }else {
                     this.$router.push({path:'/detail',query:{id:item.news_id}})
                 }
-
+                
                 console.log(item.news_id)
             },
             init(){
