@@ -3,7 +3,14 @@
     <router-view></router-view>
   </div>
 </template>
-
+<script>
+    export default {
+        name: 'App',
+        created() {
+            $('#preloader').delay(550).fadeOut('slow');
+        }
+    }
+</script>
 <style lang="scss">
   @import "../public/css/main.css";
   @import "../public/css/color-dark.css";

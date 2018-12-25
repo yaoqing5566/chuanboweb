@@ -25,11 +25,11 @@
 
                                             <div class="post-content">
                                                 <ul class="entry-meta">
-                                                    <li>September 06, 2016</li>
-                                                    <li><a href="#" >Naruto Uzumaki</a></li>
+                                                    <li>2018-12-25</li>
+                                                    <li><a>趣分享个人网站作品展示</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a href="#/detail" title="">Minimalism Never Goes Out of Style</a></h1>
+                                                <h1 class="slide-title"><a title="">网站秩序开发中</a></h1>
                                             </div>
 
                                         </div>
@@ -143,8 +143,12 @@
         watch: {
             $route() {
                 this.keyword=this.$route.query.keyword?this.$route.query.keyword:'';
+                this.pageIndex=this.$route.query.pageIndex?this.$route.query.pageIndex:1;
             },
             keyword(){
+                this.getData();
+            },
+            pageIndex(){
                 this.getData();
             }
         },
