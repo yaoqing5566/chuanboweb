@@ -45,10 +45,10 @@
                                             <div class="post-content">
                                                 <ul class="entry-meta">
                                                     <li>August 29, 2016</li>
-                                                    <li><a href="#">Sasuke Uchiha</a></li>
+                                                    <li><a>Sasuke Uchiha</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a href="#/detail" title="">Enhancing Your Designs with Negative Space</a></h1>
+                                                <h1 class="slide-title"><a title="">Enhancing Your Designs with Negative Space</a></h1>
                                             </div>
 
                                         </div>
@@ -64,10 +64,10 @@
                                             <div class="post-content">
                                                 <ul class="entry-meta">
                                                     <li>August 27, 2016</li>
-                                                    <li><a href="#" class="author">Naruto Uzumaki</a></li>
+                                                    <li><a class="author">Naruto Uzumaki</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a href="#/detail" title="">Music Album Cover Designs for Inspiration</a></h1>
+                                                <h1 class="slide-title"><a title="">Music Album Cover Designs for Inspiration</a></h1>
                                             </div>
 
                                         </div>
