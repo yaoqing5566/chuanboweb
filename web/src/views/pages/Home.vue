@@ -29,7 +29,7 @@
                                                     <li><a>趣分享个人网站作品展示</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a title="">网站秩序开发中</a></h1>
+                                                <h1 class="slide-title"><a title="">网站持续开发中</a></h1>
                                             </div>
 
                                         </div>
@@ -44,11 +44,11 @@
 
                                             <div class="post-content">
                                                 <ul class="entry-meta">
-                                                    <li>August 29, 2016</li>
-                                                    <li><a>Sasuke Uchiha</a></li>
+                                                    <li>2018-12-25</li>
+                                                    <li><a>趣分享个人网站作品展示</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a title="">Enhancing Your Designs with Negative Space</a></h1>
+                                                <h1 class="slide-title"><a title="">网站持续开发中</a></h1>
                                             </div>
 
                                         </div>
@@ -63,11 +63,11 @@
 
                                             <div class="post-content">
                                                 <ul class="entry-meta">
-                                                    <li>August 27, 2016</li>
-                                                    <li><a class="author">Naruto Uzumaki</a></li>
+                                                    <li>2018-12-25</li>
+                                                    <li><a>趣分享个人网站作品展示</a></li>
                                                 </ul>
 
-                                                <h1 class="slide-title"><a title="">Music Album Cover Designs for Inspiration</a></h1>
+                                                <h1 class="slide-title"><a title="">网站持续开发中</a></h1>
                                             </div>
 
                                         </div>
