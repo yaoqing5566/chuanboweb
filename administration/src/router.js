@@ -35,6 +35,11 @@ export default new Router({
                     path: '/addNews',
                     component: resolve => require(['./views/addNews.vue'], resolve),
                     meta: { title: '新建新闻' }
+                },
+                {
+                    path: '/questionnaire',
+                    component: resolve => require(['./views/questionnaire.vue'], resolve),
+                    meta: { title: '问卷' }
                 }
 
             ]

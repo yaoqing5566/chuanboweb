@@ -43,15 +43,6 @@
         </div>
 
 
-        <!-- 删除提示框 -->
-        <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
-            <div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="delVisible = false">取 消</el-button>
-                <el-button type="primary" @click="deleteRow">确 定</el-button>
-            </span>
-        </el-dialog>
-
     </div>
 </template>
 
@@ -96,8 +87,7 @@
                 return str[row.news_type];
             },
             formatDate(row, column) {
-                return moment(row.news_addtime).format("YYYY-MM-DD");
-                ;
+                return moment(row.news_addtime).format("YYYY-MM-DD");;
             },
             getData() {
                 let _this = this;
@@ -132,25 +122,26 @@
 
             },
             handleDelete(index, row) {
+                let _this = this;
                 this.idx = index;
                 this.removeId = row.news_id;
-                this.delVisible = true;
-            },
-            // 确定删除
-            deleteRow() {
-                let _this = this;
-                $_get('/Views/admin/news/deleteNews.aspx?ID=' + _this.removeId).then(function (response) {
-                    if (response.code == 1) {
-                        _this.tableData.splice(_this.idx, 1);
-                        _this.$message.success('删除成功');
-                        _this.delVisible = false;
-                    } else {
-                        _this.$message.error(response.msg);
+                this.$store.commit('setDialog',{
+                    title:'提示',
+                    visible:true,
+                    msg:'删除不可恢复，是否确定删除？',
+                    confirm:function () {
+                        $_get('/Views/admin/news/deleteNews.aspx?ID=' + _this.removeId).then(function (response) {
+                            if (response.code == 1) {
+                                _this.tableData.splice(_this.idx, 1);
+                                _this.$message.success('删除成功');
+                                _this.delVisible = false;
+                            } else {
+                                _this.$message.error(response.msg);
+                            }
+                        })
                     }
                 })
-
-
-            }
+            },
         }
     }
 
