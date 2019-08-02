@@ -58,6 +58,33 @@
             </span>
         </el-dialog>
 
+
+        <!-- 编辑问答 -->
+        <el-dialog title="编辑问答" :visible.sync="dialogQues" width="500">
+            <el-form ref="form2" :model="form" label-width="50px" :rules="rules">
+                <el-collapse v-model="activeName" accordion>
+                    <el-collapse-item title="一致性 Consistency" name="1">
+                        <el-form-item label="题目">
+                            <el-input v-model="form.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="备注">
+                            <el-input v-model="form.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="类型">
+                            <el-select placeholder="请选择" style="width: 100%">
+                                <el-option  label="单选" value="1"></el-option>
+                                <el-option label="多选" value="2"></el-option>
+                                <el-option label="填空" value="3"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-collapse-item>
+                </el-collapse>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogQues = false">取 消</el-button>
+                <el-button type="primary" @click="submitForm('form2')">保存</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -65,6 +92,8 @@
     export default {
         data() {
             return {
+                activeName: '1',
+                dialogQues:true,
                 dialogName:'',
                 tableData: [],
                 count:0,

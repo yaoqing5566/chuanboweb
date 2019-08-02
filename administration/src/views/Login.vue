@@ -22,7 +22,7 @@
         data: function(){
             return {
                 ruleForm: {
-                    username: '',
+                    username: '787333868@qq.com',
                     password: ''
                 },
                 rules: {
