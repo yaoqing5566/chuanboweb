@@ -61,28 +61,42 @@
 
         <!-- 编辑问答 -->
         <el-dialog title="编辑问答" :visible.sync="dialogQues" width="500">
-            <el-form ref="form2" :model="form" label-width="50px" :rules="rules">
                 <el-collapse v-model="activeName" accordion>
-                    <el-collapse-item title="一致性 Consistency" name="1">
-                        <el-form-item label="题目">
-                            <el-input v-model="form.name"></el-input>
-                        </el-form-item>
-                        <el-form-item label="备注">
-                            <el-input v-model="form.name"></el-input>
-                        </el-form-item>
-                        <el-form-item label="类型">
-                            <el-select placeholder="请选择" style="width: 100%">
-                                <el-option  label="单选" value="1"></el-option>
-                                <el-option label="多选" value="2"></el-option>
-                                <el-option label="填空" value="3"></el-option>
-                            </el-select>
-                        </el-form-item>
+                    <el-collapse-item :name="index" v-for="(item,index) in questions">
+                        <template slot="title">{{index+1}}：{{item.title}}<span style="float: right; margin: 18px 20px 0 0; color:red;display: inline-block" class="el-icon-error" @click.stop="removeQues(index)"></span></template>
+                        <el-form  style="width: 100%" label-width="50px">
+                            <el-form-item label="标题">
+                                <el-input v-model="item.title"></el-input>
+                            </el-form-item>
+                            <el-form-item label="备注">
+                                <el-input v-model="item.remarks"></el-input>
+                            </el-form-item>
+                            <el-form-item label="类型">
+                                <el-select v-model="item.type" placeholder="请选择" style="width: 100%">
+                                    <el-option label="单选" value="1"></el-option>
+                                    <el-option label="多选" value="2"></el-option>
+                                    <el-option label="填空" value="3"></el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item label="选项" class="questionnaire">
+                                <div class="options">
+                                    <el-input v-model="item.remarks"></el-input>
+                                    <span class="el-icon-error" @click.stop="removeQues(index)"></span>
+                                </div>
+                                <div class="options">
+                                    <el-input v-model="item.remarks"></el-input>
+                                    <span class="el-icon-error" @click.stop="removeQues(index)"></span>
+                                </div>
+                            </el-form-item>
+                        </el-form>
+
                     </el-collapse-item>
                 </el-collapse>
-            </el-form>
+
+
             <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogQues = false">取 消</el-button>
-                <el-button type="primary" @click="submitForm('form2')">保存</el-button>
+                <el-button @click="addQuestion()">添加题目</el-button>
+                <el-button type="primary">保存</el-button>
             </span>
         </el-dialog>
     </div>
@@ -92,7 +106,15 @@
     export default {
         data() {
             return {
-                activeName: '1',
+                questions:[
+                    {
+                        title:'',
+                        remarks:'',
+                        type:'1',
+                        options:[]
+                    }
+                ],
+                activeName: 0,
                 dialogQues:true,
                 dialogName:'',
                 tableData: [],
@@ -126,6 +148,21 @@
         },
         computed: {},
         methods: {
+            removeQues(i){
+                if(this.questions.length<=1){
+                    this.$message.error("最少有1个题目！");
+                    return
+                }
+                this.questions.splice(i,1)
+            },
+            addQuestion(){
+                this.questions.push({
+                    title:'',
+                    remarks:'',
+                    type:'1'
+                })
+                this.activeName=this.questions.length-1
+            },
             editQues(index,row) {
 
             },
@@ -257,6 +294,11 @@
 
 </script>
 
-<style scoped>
-
+<style  lang="scss">
+    .questionnaire .options{
+        position: relative; padding:0 0px 10px 0px;
+        .el-icon-error{
+            position: absolute;; right: 10px; top: 10px; color: red;
+        }
+    }
 </style>
