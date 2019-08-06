@@ -44,7 +44,7 @@
                 <el-form-item label="标题" prop="name">
                     <el-input v-model="form.name"></el-input>
                 </el-form-item>
-                <el-form-item label="说明" prop="explain">
+                <el-form-item label="说明" >
                     <el-input v-model="form.remarks"></el-input>
                 </el-form-item>
                 <el-form-item label="图片" prop="cover">
@@ -60,43 +60,44 @@
 
 
         <!-- 编辑问答 -->
-        <el-dialog title="编辑问答" :visible.sync="dialogQues" width="500">
-                <el-collapse v-model="activeName" accordion>
-                    <el-collapse-item :name="index" v-for="(item,index) in questions">
-                        <template slot="title">{{index+1}}：{{item.title}}<span style="float: right; margin: 18px 20px 0 0; color:red;display: inline-block" class="el-icon-error" @click.stop="removeQues(index)"></span></template>
-                        <el-form  style="width: 100%" label-width="50px">
-                            <el-form-item label="标题">
-                                <el-input v-model="item.title"></el-input>
-                            </el-form-item>
-                            <el-form-item label="备注">
-                                <el-input v-model="item.remarks"></el-input>
-                            </el-form-item>
-                            <el-form-item label="类型">
-                                <el-select v-model="item.type" placeholder="请选择" style="width: 100%">
-                                    <el-option label="单选" value="1"></el-option>
-                                    <el-option label="多选" value="2"></el-option>
-                                    <el-option label="填空" value="3"></el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="选项" class="questionnaire">
-                                <div class="options">
-                                    <el-input v-model="item.remarks"></el-input>
-                                    <span class="el-icon-error" @click.stop="removeQues(index)"></span>
-                                </div>
-                                <div class="options">
-                                    <el-input v-model="item.remarks"></el-input>
-                                    <span class="el-icon-error" @click.stop="removeQues(index)"></span>
-                                </div>
-                            </el-form-item>
-                        </el-form>
-
-                    </el-collapse-item>
-                </el-collapse>
-
-
+        <el-dialog :close-on-click-modal="false" title="编辑问题" :visible.sync="dialogQues" width="500">
+              <div style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
+                  <el-form :model="questions" ref="questions" label-width="50px">
+                      <el-collapse v-model="activeName" accordion>
+                          <el-collapse-item :name="index" v-for="(item,index) in questions.lists">
+                              <template slot="title">
+                                  <strong>
+                                      问题{{index+1}}：{{item.title}}
+                                      <span style="float: right; margin: 18px 20px 0 0; color:red;display: inline-block;font-size: 16px" class="el-icon-error" @click.stop="removeQues(index)"></span>
+                                  </strong>
+                              </template>
+                                  <el-form-item label="标题" :prop="`lists[${index}].title`" :rules="{required: true, message: '标题不能为空', trigger: 'blur'}">
+                                      <el-input v-model="item.title" clearable></el-input>
+                                  </el-form-item>
+                                  <el-form-item label="备注">
+                                      <el-input v-model="item.remarks" clearable></el-input>
+                                  </el-form-item>
+                                  <el-form-item label="类型">
+                                      <el-select v-model="item.type" placeholder="请选择" style="width: 100%" @change="selectType(item)">
+                                          <el-option label="单选" value="1"></el-option>
+                                          <el-option label="多选" value="2"></el-option>
+                                          <el-option label="填空" value="3"></el-option>
+                                      </el-select>
+                                  </el-form-item>
+                                  <el-form-item label="选项" class="questionnaire" v-if="item.type!=3">
+                                      <div class="options" v-for="(item2,index2) in item.options" :prop="`options[${index2}].val`" :rules="{required: true, message: '不能为空', trigger: 'blur'}">
+                                          <el-input clearable v-model="item2.val"></el-input>
+                                          <span class="el-icon-error" style="font-size: 16px" @click.stop="removeQues2(index,index2)"></span>
+                                      </div>
+                                      <div style="text-align: center"><el-button @click.stop="addQuesOption(item)" style="width: 100px" size="small" type="success">添加选项</el-button></div>
+                                  </el-form-item>
+                          </el-collapse-item>
+                      </el-collapse>
+                  </el-form>
+              </div>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="addQuestion()">添加题目</el-button>
-                <el-button type="primary">保存</el-button>
+                <el-button type="success" @click="addQuestion()">添加题目</el-button>
+                <el-button type="primary" @click="saveQuestion('questions')">保存</el-button>
             </span>
         </el-dialog>
     </div>
@@ -106,16 +107,11 @@
     export default {
         data() {
             return {
-                questions:[
-                    {
-                        title:'',
-                        remarks:'',
-                        type:'1',
-                        options:[]
-                    }
-                ],
+                questions: {
+                    lists:[]
+                },
                 activeName: 0,
-                dialogQues:true,
+                dialogQues:false,
                 dialogName:'',
                 tableData: [],
                 count:0,
@@ -136,7 +132,10 @@
                     ],
                     cover: [
                         {required: true, message: '请上传图片', trigger: 'blur'}
-                    ]
+                    ],
+                    title: [
+                        {required: true, message: '请输入名称', trigger: 'blur'},
+                    ],
                 },
             }
         },
@@ -146,25 +145,119 @@
         filters: {
 
         },
-        computed: {},
+        computed: {
+            getRandom(){
+                return (new Date()).getTime() + "-" + Math.floor(Math.random() * 10000);
+            },
+
+        },
         methods: {
+            verification(){
+                let qs=this.questions.lists;
+                for(let i in qs){
+                    var title=qs[i].title;
+                    if(!title){
+                        this.activeName=parseInt(i);
+                        this.$message.error('问题'+(parseInt(i)+1)+'标题不能为空！');
+                        return false;
+                    }
+                    for(let j in qs[i].options){
+                        if(!qs[i].options[j].val){
+                            this.activeName=parseInt(i);
+                            this.$message.error('问题'+(parseInt(i)+1)+'第'+(parseInt(j)+1)+'选项不能为空！');
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            },
+            saveQuestion(formName){
+                let _this=this;
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        if(_this.verification()){
+                            console.log(11111)
+                        }
+
+                    } else {
+                        _this.verification();
+                        return false;
+                    }
+
+                })
+            },
+            selectType(item){
+                console.log(item)
+                if(item.type==3){
+                    item.options=[];
+                }else {
+                    item.options=[{
+                        id: this.getRandom,
+                        val: ''
+                    },
+                        {
+                            id: this.getRandom+1,
+                            val: ''
+                        }];
+                }
+            },
             removeQues(i){
-                if(this.questions.length<=1){
+                if(this.questions.lists.length<=1){
                     this.$message.error("最少有1个题目！");
                     return
                 }
-                this.questions.splice(i,1)
+                this.questions.lists.splice(i,1)
+            },
+            removeQues2(pIndex,i){
+                if(this.questions.lists[pIndex].options.length<=2){
+                    this.$message.error("最少有2个选项！");
+                    return
+                }
+                this.questions.lists[pIndex].options.splice(i,1)
+            },
+            addQuesOption(pItem){
+                pItem.options.push({
+                    id:this.getRandom,
+                    val:''
+                })
             },
             addQuestion(){
-                this.questions.push({
+                this.questions.lists.push({
                     title:'',
                     remarks:'',
-                    type:'1'
+                    type:'1',
+                    options:[
+                        {
+                            id: this.getRandom,
+                            val: ''
+                        },
+                        {
+                            id: this.getRandom+1,
+                            val: ''
+                        }
+                    ]
                 })
-                this.activeName=this.questions.length-1
+                this.activeName=this.questions.lists.length-1;
             },
             editQues(index,row) {
-
+                this.dialogQues=true;
+                this.questions.lists=[{
+                    title: '',
+                    remarks: '',
+                    type: '1',
+                    options: [
+                        {
+                            id: this.getRandom,
+                            val: ''
+                        },
+                        {
+                            id: this.getRandom+1,
+                            val: ''
+                        }
+                    ]
+                }]
+                console.log(this.questions.lists)
             },
             handleCurrentChange(val) {
                 this.pageIndex = val;
@@ -223,7 +316,6 @@
                         cover:item.cover
                     }
                 }
-
                 this.editVisible = true;
             },
             submitForm(formName) {
@@ -261,22 +353,22 @@
                 let _this = this;
                 this.idx = index;
                 this.removeId = row.id;
-                this.$store.commit('setDialog',{
-                    title:'提示',
-                    visible:true,
-                    msg:'删除不可恢复，是否确定删除？',
-                    confirm:function () {
-                        $_get('/Views/admin/deleteTable.aspx?id=' + _this.removeId+"&T=questionnaire_list").then(function (response) {
-                            if (response.code == 1) {
-                                _this.tableData.splice(_this.idx, 1);
-                                _this.$message.success('删除成功');
-                                _this.delVisible = false;
-                            } else {
-                                _this.$message.error(response.msg);
-                            }
-                        })
-                    }
-                })
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    $_get('/Views/admin/deleteTable.aspx?id=' + _this.removeId+"&T=questionnaire_list").then(function (response) {
+                        if (response.code == 1) {
+                            _this.tableData.splice(_this.idx, 1);
+                            _this.$message.success('删除成功');
+                            _this.delVisible = false;
+                        } else {
+                            _this.$message.error(response.msg);
+                        }
+                    })
+                }).catch(() => {
+                });
             },
             getData() {
                 let _this = this;
@@ -296,7 +388,7 @@
 
 <style  lang="scss">
     .questionnaire .options{
-        position: relative; padding:0 0px 10px 0px;
+        position: relative; padding:0 37px 10px 0px;
         .el-icon-error{
             position: absolute;; right: 10px; top: 10px; color: red;
         }
