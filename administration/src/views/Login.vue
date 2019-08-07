@@ -51,7 +51,6 @@
                                 _this.$message.error(response.msg);
                             }
                         })
-
                     } else {
                         console.log('error submit!!');
                         return false;
