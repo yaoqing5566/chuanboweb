@@ -12,6 +12,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                 </div>
+                <div><a href="/#/wxLogin">微信登陆</a></div>
             </el-form>
         </div>
     </div>
