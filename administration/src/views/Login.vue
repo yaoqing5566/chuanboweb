@@ -12,7 +12,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                 </div>
-                <div><a href="/#/wxLogin">微信登陆</a></div>
+                <div><a href="javascript:;;" @click="goWxlogin">微信登陆</a></div>
             </el-form>
         </div>
     </div>
@@ -37,6 +37,9 @@
             }
         },
         methods: {
+            goWxlogin(){
+                this.$router.push({path:'/wxLogin'})
+            },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
