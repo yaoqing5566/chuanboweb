@@ -19,13 +19,12 @@ router.beforeEach((to, from, next) => {
     if(ms_user){
         role=ms_user.name;
     }
-
-
-    if(!role && to.path !== '/login'){
+    console.log(to.path,to.path.indexOf('/web'))
+    if(!role && to.path !== '/login'&& to.path.indexOf('/web')==-1){
         next('/login');
     }else if(to.meta.permission){
         // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-        role === 'admin' ? next() : next('/403');
+      role === 'admin' ? next() : next('/403');
     }else{
         // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
         if(navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor'){

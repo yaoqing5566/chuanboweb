@@ -38,7 +38,7 @@
         },
         methods: {
             goWxlogin(){
-                this.$router.push({path:'/wxLogin'})
+                this.$router.push({path:'/web/wxLogin'})
             },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
@@ -50,6 +50,7 @@
                         }).then(function (response) {
                             if(response.code==1){
                                 localStorage.setItem('ms_user',JSON.stringify(response.data));
+                                _this.$store.state.userDetail=response.data;
                                 _this.$router.push('/news');
                             }else {
                                 _this.$message.error(response.msg);

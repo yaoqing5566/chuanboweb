@@ -2,7 +2,7 @@
     <div class="login-wrap-wx" :style="{'height':$store.state.windowHeight+'px'}">
         <div class="loginArea_weixin">
             <h3>微信登录</h3>
-            <div class="mtop">
+            <div class="mtop" v-if="tableData.ticket">
                 <img width="280" height="280" :src="'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='+tableData.ticket">
             </div>
             <div class="for_black_theme">扫码 &gt; 关注并登录</div>
@@ -14,17 +14,38 @@
     export default {
         data: function(){
             return {
-                tableData:{}
+                tableData:{
+                    ticket:'',
+                    time:''
+                }
             }
         },
         methods: {
-
+            getLogin(ticket){
+                let _this=this;
+                $_get('/Views/weixin/getUserByTicket.aspx?ticket='+ticket).then(function (response) {
+                    console.log(response)
+                    if (response.code == 1) {
+                        clearInterval(_this.time)
+                        localStorage.setItem('ms_user',JSON.stringify(response.data));
+                        _this.$store.state.userDetail=response.data;
+                        _this.$router.push('/news');
+                    } else {
+                       // _this.$message.error(response.msg);
+                    }
+                })
+            }
         },
         created() {
             let _this=this;
             $_get('/Views/weixin/getQrCode.aspx').then(function (response) {
                 if (response.code == 1) {
                     _this.tableData=response.data;
+
+                   _this.time=setInterval(function () {
+                        _this.getLogin( _this.tableData.ticket);
+                    },1000)
+
                 } else {
                     _this.$message.error(response.msg);
                 }

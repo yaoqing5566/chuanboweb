@@ -49,7 +49,7 @@ export default new Router({
             component: resolve => require(['./views/Login.vue'], resolve)
         },
         {
-            path: '/wxLogin',
+            path: '/web/wxLogin',
             component: resolve => require(['./views/wxLogin.vue'], resolve)
         },
         {
