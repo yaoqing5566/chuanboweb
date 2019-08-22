@@ -40,6 +40,11 @@ export default new Router({
                     path: '/questionnaire',
                     component: resolve => require(['./views/questionnaire.vue'], resolve),
                     meta: { title: '问卷' }
+                },
+                {
+                    path: '/wxMenu',
+                    component: resolve => require(['./views/wxMenu.vue'], resolve),
+                    meta: { title: '问卷' }
                 }
 
             ]

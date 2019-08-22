@@ -46,6 +46,17 @@
                                 title: '问卷列表'
                             }
                         ]
+                    },
+                    {
+                        icon: 'el-icon-edit-outline',
+                        title: '微信公众号',
+                        index: '2',
+                        subs:[
+                            {
+                                index: 'wxMenu',
+                                title: '公众号菜单'
+                            }
+                        ]
                     }
                 ]
             }
