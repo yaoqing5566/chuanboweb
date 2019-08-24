@@ -351,16 +351,14 @@
             },
             handleDelete(index, row) {
                 let _this = this;
-                this.idx = index;
-                this.removeId = row.id;
                 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    $_get('/Views/admin/deleteTable.aspx?id=' + _this.removeId+"&T=questionnaire_list").then(function (response) {
+                    $_get('/Views/admin/deleteTable.aspx?id=' +row.id+"&T=questionnaire_list").then(function (response) {
                         if (response.code == 1) {
-                            _this.tableData.splice(_this.idx, 1);
+                            _this.tableData.splice(index, 1);
                             _this.$message.success('删除成功');
                             _this.delVisible = false;
                         } else {

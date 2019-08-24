@@ -17,31 +17,33 @@
                       default-expand-all
                       :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
                 <el-table-column prop="name" label="菜单名字"></el-table-column>
-                <el-table-column prop="remarks" label="菜单类型"></el-table-column>
                 <el-table-column prop="creat_time" :formatter="formatDate" sortable label="创建日期"></el-table-column>
+                <el-table-column label="菜单说明">
+                    <template slot-scope="scope">
+                        {{scope.row.type==1?scope.row.remarks:scope.row.url}}
+                    </template>
+                </el-table-column>
                 <el-table-column label="操作" width="280">
                     <template slot-scope="scope">
                         <el-button size="small" type="primary" @click="add(scope.row)" plain>编辑</el-button>
-                        <el-button size="small" type="success" @click="add(scope.row,'2')" plain>添加二级菜单</el-button>
-                        <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除
-                        </el-button>
+                        <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                        <el-button size="small" type="success" v-if="scope.row.pid==0" @click="add(scope.row,'2')" plain>添加二级菜单</el-button>
                     </template>
                 </el-table-column>
             </el-table>
-
-
         </div>
 
+
         <!-- 编辑弹出框 -->
-        <el-dialog :title="dialogName" :visible.sync="editVisible" width="30%">
+        <el-dialog :title="dialogName" :visible.sync="editVisible" width="35%">
             <el-form ref="form" :model="form" label-width="50px" :rules="rules">
                 <el-form-item label="标题" prop="name">
                     <el-input v-model="form.name"></el-input>
                 </el-form-item>
                 <el-form-item label="类型" prop="type">
                     <el-select v-model="form.type" clearable placeholder="类型" style="width: 100%">
-                        <el-option value="1" label="内容"></el-option>
-                        <el-option value="2" label="链接"></el-option>
+                        <el-option value="1" label="推送内容"></el-option>
+                        <el-option value="2" label="跳转链接"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="说明" v-if="form.type==1">
@@ -66,33 +68,7 @@
         data() {
             return {
                 dialogName:'',
-                tableData:  [{
-                    id: 2,
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    id: 3,
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄',
-                    children: [{
-                        id: 31,
-                        date: '2016-05-01',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1519 弄'
-                    }, {
-                        id: 22,
-                        date: '2016-05-01',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1519 弄'
-                    }]
-                }, {
-                    id: 4,
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }],
+                tableData:  [],
                 select:{
                     name:''
                 },
@@ -128,6 +104,14 @@
                 return moment(row.news_addtime).format("YYYY-MM-DD");;
             },
             add(row,menuLevel) {
+                console.log(this.row)
+                if(menuLevel==1){
+                    if(this.tableData.length>=3){
+                        this.$message.error("最多只能添加3个一级菜单");
+                        return
+                    }
+                }
+
                 this.menuLevel=menuLevel;
                 this.dialogName='添加';
                 this.idx = '';
@@ -137,9 +121,24 @@
                     type:'',
                     url:''
                 }
-                if(row&&menuLevel!=2){
-                    this.dialogName='修改';
-                    this.idx = row.id;
+                if(row){
+                    if(menuLevel==2){//添加二级菜单
+                        if(row.children.length>=5){
+                            this.$message.error("最多只能添加5个二级菜单");
+                            return
+                        }
+                        this.dialogName='添加['+row.name+"]子菜单";
+                        this.form.pid=row.id;
+                    }else {
+                        this.dialogName='修改';
+                        this.idx = row.id;
+                        this.form={
+                            name: row.name,
+                            remarks:row.type==1?row.remarks:'',
+                            type: row.type,
+                            url: row.type==2?row.url:'',
+                        }
+                    }
                 }
                 this.editVisible = true;
             },
@@ -149,13 +148,12 @@
                     if (valid) {
                         let url='/Views/admin/addTable.aspx?T=cms_wx_menu';
                         let sa=JSON.parse(JSON.stringify(_this.form));
-                        if(_this.menuLevel==1){
-                            sa.pid=0;
-                        }else {
-
-                        }
                         let saveData={
                             data:JSON.stringify(sa)
+                        }
+                        if(_this.idx){
+                            saveData.id=_this.idx;
+                            url='/Views/admin/addTable.aspx?T=cms_wx_menu';
                         }
                         $_post(url,saveData).then(function (response) {
                             if(response.code==1){
@@ -173,12 +171,47 @@
                     console.log()
                 })
             },
+            handleDelete(index, row) {
+                let _this = this;
+
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    $_get('/Views/admin/deleteTable.aspx?id='+ row.id+"&T=cms_wx_menu").then(function (response) {
+                        if (response.code == 1) {
+                            _this.getData();
+                            _this.$message.success('删除成功');
+                            _this.delVisible = false;
+                        } else {
+                            _this.$message.error(response.msg);
+                        }
+                    })
+                }).catch(() => {
+                });
+            },
             getData() {
                 let _this = this;
                 $_get('/Views/admin/weixin/getMenu.aspx').then(function (response) {
                     if (response.code == 1) {
-                        _this.tableData = response.data.list;
-
+                        let newData=[];
+                        let arrs= response.data.list;
+                        for(let i in arrs){
+                            let pid=arrs[i].pid;
+                            let rowIndex=newData.findIndex((item,index,arr)=>{
+                                return item.id===pid;
+                            })
+                            if(rowIndex>=0){
+                                newData[rowIndex].children.push(arrs[i])
+                            }else {
+                                let ds=arrs[i];
+                                ds.children=[]
+                                newData.push(ds)
+                            }
+                        }
+                        _this.tableData = newData;
+                        console.log(newData)
                     } else {
                         _this.$message.error(response.msg);
                     }
