@@ -46,11 +46,21 @@
                                 title: '问卷列表'
                             }
                         ]
+                    },{
+                        icon: 'el-icon-edit-outline',
+                        title: '活动',
+                        index: '2',
+                        subs:[
+                            {
+                                index: 'activity',
+                                title: '活动列表'
+                            }
+                        ]
                     },
                     {
                         icon: 'el-icon-edit-outline',
                         title: '微信公众号',
-                        index: '2',
+                        index: '3',
                         subs:[
                             {
                                 index: 'wxMenu',

@@ -45,6 +45,11 @@ export default new Router({
                     path: '/wxMenu',
                     component: resolve => require(['./views/wxMenu.vue'], resolve),
                     meta: { title: '问卷' }
+                },
+                {
+                    path: '/activity',
+                    component: resolve => require(['./views/activity.vue'], resolve),
+                    meta: { title: '活动' }
                 }
 
             ]

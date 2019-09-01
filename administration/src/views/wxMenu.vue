@@ -153,7 +153,7 @@
                         }
                         if(_this.idx){
                             saveData.id=_this.idx;
-                            url='/Views/admin/addTable.aspx?T=cms_wx_menu';
+                            url='/Views/admin/updateTable.aspx?T=cms_wx_menu';
                         }
                         $_post(url,saveData).then(function (response) {
                             if(response.code==1){
@@ -173,7 +173,6 @@
             },
             handleDelete(index, row) {
                 let _this = this;
-
                 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
