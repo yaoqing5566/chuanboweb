@@ -65,6 +65,10 @@
                             {
                                 index: 'wxMenu',
                                 title: '公众号菜单'
+                            },
+                            {
+                                index: 'wxUser',
+                                title: '关注用户'
                             }
                         ]
                     }

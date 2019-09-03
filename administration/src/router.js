@@ -44,7 +44,11 @@ export default new Router({
                 {
                     path: '/wxMenu',
                     component: resolve => require(['./views/wxMenu.vue'], resolve),
-                    meta: { title: '问卷' }
+                    meta: { title: '微信菜单' }
+                },{
+                    path: '/wxUser',
+                    component: resolve => require(['./views/wxUser.vue'], resolve),
+                    meta: { title: '关注用户' }
                 },
                 {
                     path: '/activity',

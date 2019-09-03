@@ -34,7 +34,6 @@
                                layout="prev, pager, next" :total="count">
                 </el-pagination>
             </div>
-
         </div>
 
         <!-- 编辑弹出框 -->
