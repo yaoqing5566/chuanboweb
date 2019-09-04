@@ -19,7 +19,7 @@
                         <img :src="scope.row.headimgurl" style="border-radius: 50%" width="60"/>
                     </template>
                 </el-table-column>
-                <el-table-column prop="nickname" label="名称"></el-table-column>
+                <el-table-column prop="nickname" label="名称" :formatter="formatNickname"></el-table-column>
                 <el-table-column  label="性别">
                     <template slot-scope="scope">
                        {{scope.row.sex==1?'男':'女'}}
@@ -87,6 +87,9 @@
 
         },
         methods: {
+            formatNickname: function (row, column) {
+                return decodeURIComponent(row.nickname);
+            },
             handleCurrentChange(val) {
                 this.pageIndex = val;
                 this.getData();
