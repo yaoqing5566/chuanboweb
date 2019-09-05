@@ -20,9 +20,11 @@
                 <el-table-column prop="title" label="标题"></el-table-column>
                 <el-table-column prop="sub_titile" label="说明"></el-table-column>
                 <el-table-column prop="creat_time" :formatter="formatDate" sortable label="创建日期"></el-table-column>
-                <el-table-column label="操作" width="150">
+                <el-table-column label="操作" width="250">
                     <template slot-scope="scope">
                         <el-button size="small" type="primary" @click="add(scope.$index, scope.row,'edit')" plain>编辑
+                        </el-button>
+                        <el-button size="small" type="primary" @click="changePage(scope.row)" plain>查看详细
                         </el-button>
                         <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除
                         </el-button>
@@ -104,12 +106,15 @@
 
         },
         methods: {
+            changePage(item){
+                this.$router.push({path:'/activity-user',query:{id:item.id}})
+            },
             handleCurrentChange(val) {
                 this.pageIndex = val;
                 this.getData();
             },
             formatDate(row, column) {
-                return moment(row.news_addtime).format("YYYY-MM-DD");;
+                return moment(row.news_addtime).format("YYYY-MM-DD");
             },
             uploadImg(event){
                 let that=this;

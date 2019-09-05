@@ -2,7 +2,7 @@
     <div class="table">
         <div class="crumbs">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-date"></i>活动列表</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-date"></i>参加活动人员</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="container">
@@ -25,20 +25,18 @@
                        {{scope.row.sex==1?'男':'女'}}
                     </template>
                 </el-table-column>
-                <el-table-column  label="关注来源">
+                <el-table-column  label="照片">
                     <template slot-scope="scope">
-                        {{subscribeSceneStr[scope.row.subscribe_scene]}}
+                        <img :src="img" width="50" style="margin: 0 3px" v-for="img in imgsArr(scope.row.imgs)"/>
                     </template>
                 </el-table-column>
                 <el-table-column prop="creat_time" :formatter="formatDate" sortable label="创建日期"></el-table-column>
-                <!--<el-table-column label="操作" width="150">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--<el-button size="small" type="primary" @click="add(scope.$index, scope.row,'edit')" plain>编辑-->
-                        <!--</el-button>-->
-                        <!--<el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除-->
-                        <!--</el-button>-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
+                <el-table-column label="操作" width="150">
+                    <template slot-scope="scope">
+                        <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除
+                        </el-button>
+                    </template>
+                </el-table-column>
             </el-table>
             <div class="pagination">
                 <el-pagination background @current-change="handleCurrentChange" :page-size="pageSize"
@@ -61,16 +59,6 @@
                 select:{
                     name:''
                 },
-                subscribeSceneStr:{
-                    'ADD_SCENE_SEARCH':'公众号搜索',
-                    'ADD_SCENE_ACCOUNT_MIGRATION':'公众号迁移',
-                    'ADD_SCENE_PROFILE_CARD':'名片分享',
-                    'ADD_SCENE_QR_CODE':'扫描二维码',
-                    'ADD_SCENEPROFILE LINK':'图文页内名称点击',
-                    'DD_SCENE_PROFILE_ITEM':'图文页右上角菜单',
-                    'ADD_SCENE_PAID':'支付后关注',
-                    'ADD_SCENE_OTHERS':'其他',
-                }
 
             }
         },
@@ -87,6 +75,10 @@
 
         },
         methods: {
+            imgsArr(data){
+                console.log(data)
+                return data.split('-');
+            },
             formatNickname: function (row, column) {
                 return decodeURIComponent(row.nickname);
             },
@@ -108,7 +100,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    $_get('/Views/admin/deleteTable.aspx?id=' +row.id+"&T=questionnaire_list").then(function (response) {
+                    $_get('/Views/admin/deleteTable.aspx?id=' +row.id+"&T=users_add_activity").then(function (response) {
                         if (response.code == 1) {
                             _this.tableData.splice(index, 1);
                             _this.$message.success('删除成功');
@@ -122,7 +114,8 @@
             },
             getData() {
                 let _this = this;
-                $_get('/Views/admin/weixin/getWxUser.aspx?pageIndex='+_this.pageIndex+'&pageSize='+_this.pageSize+'&name='+_this.select.name ).then(function (response) {
+                let id=this.$route.query.id;
+                $_get('/Views/admin/activity/getAddUserList.aspx?pageIndex='+_this.pageIndex+'&pageSize='+_this.pageSize+'&name='+_this.select.name+'&activityId='+id).then(function (response) {
                     if (response.code == 1) {
                         _this.tableData = response.data.list;
                         _this.count = response.data.count;

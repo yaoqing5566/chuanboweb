@@ -77,7 +77,8 @@
         },
         computed: {
             onRoutes() {
-                return this.$route.path.replace('/', '');
+                let uStr=this.$route.path.replace('/', '');
+                return uStr.split('-')[0];
             }
         },
         created() {

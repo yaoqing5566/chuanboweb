@@ -54,6 +54,11 @@ export default new Router({
                     path: '/activity',
                     component: resolve => require(['./views/activity.vue'], resolve),
                     meta: { title: '活动' }
+                },
+                {
+                    path: '/activity-user',
+                    component: resolve => require(['./views/activityUser.vue'], resolve),
+                    meta: { title: '活动列表' }
                 }
 
             ]
