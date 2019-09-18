@@ -158,7 +158,7 @@
                 }
                 if(type=='edit'){
                     this.dialogName='修改';
-                    this.idx = index;
+                    this.idx = row.id;
                     const item = this.tableData[index];
                     this.form ={
                         title: item.title,
@@ -178,7 +178,10 @@
                         let saveData={
                             data:JSON.stringify(sa)
                         }
-
+                        if(_this.idx){
+                            saveData.id=_this.idx;
+                            url='/Views/admin/updateTable.aspx?T=activity_lists';
+                        }
                         $_post(url,saveData).then(function (response) {
                             if(response.code==1){
                                 _this.$message.success('操作成功');
@@ -206,7 +209,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    $_get('/Views/admin/deleteTable.aspx?id=' +row.id+"&T=questionnaire_list").then(function (response) {
+                    $_get('/Views/admin/deleteTable.aspx?id=' +row.id+"&T=activity_lists").then(function (response) {
                         if (response.code == 1) {
                             _this.tableData.splice(index, 1);
                             _this.$message.success('删除成功');
