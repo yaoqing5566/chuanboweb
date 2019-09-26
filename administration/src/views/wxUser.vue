@@ -95,7 +95,7 @@
                 this.getData();
             },
             formatDate(row, column) {
-                return moment(row.news_addtime).format("YYYY-MM-DD");;
+                return moment(row.creat_time).format("YYYY-MM-DD HH:mm:ss");;
             },
             searchData() {
                 console.log(this.select)
