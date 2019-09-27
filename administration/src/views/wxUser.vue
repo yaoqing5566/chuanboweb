@@ -2,7 +2,7 @@
     <div class="table">
         <div class="crumbs">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-date"></i>活动列表</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-date"></i>微信用户</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="container">
@@ -11,6 +11,7 @@
                 <el-input style="width: 180px" clearable v-model="select.name" placeholder="名字"
                           class="handle-input mr10"></el-input>&nbsp;&nbsp;
                 <el-button type="primary" @click="searchData">查询</el-button>
+                <el-link type="danger" style="font-weight: bold; margin-left: 20px;font-size: 16px">共：{{count}}</el-link>
             </div>
 
             <el-table :data="tableData" border style="width: 100%">
@@ -59,7 +60,8 @@
                 pageIndex:1,
                 pageSize:10,
                 select:{
-                    name:''
+                    name:'',
+                    type:""
                 },
                 subscribeSceneStr:{
                     'ADD_SCENE_SEARCH':'公众号搜索',
@@ -85,6 +87,13 @@
                 return (new Date()).getTime() + "-" + Math.floor(Math.random() * 10000);
             },
 
+        },
+        watch: {
+            '$route' (to, from) {
+                this.pageIndex=1;
+                this.select.name="";
+                this.getData();
+            }
         },
         methods: {
             formatNickname: function (row, column) {
@@ -122,7 +131,8 @@
             },
             getData() {
                 let _this = this;
-                $_get('/Views/admin/weixin/getWxUser.aspx?pageIndex='+_this.pageIndex+'&pageSize='+_this.pageSize+'&name='+_this.select.name ).then(function (response) {
+                this.select.type=this.$route.meta.type;
+                $_get('/Views/admin/weixin/getWxUser.aspx?pageIndex='+_this.pageIndex+'&pageSize='+_this.pageSize+'&name='+_this.select.name+'&type='+_this.select.type).then(function (response) {
                     if (response.code == 1) {
                         _this.tableData = response.data.list;
                         _this.count = response.data.count;
@@ -141,6 +151,7 @@
         position: relative; padding:0 37px 10px 0px;
         .el-icon-error{
             position: absolute;; right: 10px; top: 10px; color: red;
+
         }
     }
 </style>

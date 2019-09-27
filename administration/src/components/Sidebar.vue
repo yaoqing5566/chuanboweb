@@ -69,6 +69,10 @@
                             {
                                 index: 'wxUser',
                                 title: '关注用户'
+                            },
+                            {
+                                index: 'wxCancelUser',
+                                title: '取关用户'
                             }
                         ]
                     }

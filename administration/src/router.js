@@ -48,7 +48,11 @@ export default new Router({
                 },{
                     path: '/wxUser',
                     component: resolve => require(['./views/wxUser.vue'], resolve),
-                    meta: { title: '关注用户' }
+                    meta: { title: '关注用户', type: 0 }
+                },{
+                    path: '/wxCancelUser',
+                    component: resolve => require(['./views/wxUser.vue'], resolve),
+                    meta: { title: '取关用户', type: -1 }
                 },
                 {
                     path: '/activity',
