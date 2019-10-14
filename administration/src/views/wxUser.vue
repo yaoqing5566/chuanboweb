@@ -31,7 +31,7 @@
                         {{subscribeSceneStr[scope.row.subscribe_scene]}}
                     </template>
                 </el-table-column>
-                <el-table-column prop="creat_time" :formatter="formatDate" sortable label="创建日期"></el-table-column>
+                <el-table-column prop="updtae_time" :formatter="formatDate" sortable label="更新日期"></el-table-column>
                 <!--<el-table-column label="操作" width="150">-->
                     <!--<template slot-scope="scope">-->
                         <!--<el-button size="small" type="primary" @click="add(scope.$index, scope.row,'edit')" plain>编辑-->
@@ -104,7 +104,7 @@
                 this.getData();
             },
             formatDate(row, column) {
-                return moment(row.creat_time).format("YYYY-MM-DD HH:mm:ss");;
+                return moment(row.updtae_time).format("YYYY-MM-DD HH:mm:ss");;
             },
             searchData() {
                 console.log(this.select)
