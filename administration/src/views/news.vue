@@ -89,16 +89,15 @@
             formatDate(row, column) {
                 return moment(row.news_addtime).format("YYYY-MM-DD");;
             },
-            getData() {
+            async getData() {
                 let _this = this;
-                $_get('/Views/admin/news/getNews.aspx?pageIndex='+_this.pageIndex+'&pageSize='+_this.pageSize+'&type='+_this.$store.state.userDetail.id+'&name='+_this.select.name).then(function (response) {
-                    if (response.code == 1) {
-                        _this.tableData = response.data.list;
-                        _this.count = response.data.count;
-                    } else {
-                        _this.$message.error(response.msg);
-                    }
-                })
+                let response=await $_get('/Views/admin/news/getNews.aspx?pageIndex='+_this.pageIndex+'&pageSize='+_this.pageSize+'&type='+_this.$store.state.userDetail.id+'&name='+_this.select.name)
+                if (response.code == 1) {
+                    _this.tableData = response.data.list;
+                    _this.count = response.data.count;
+                } else {
+                    _this.$message.error(response.msg);
+                }
             },
             handleEdit(index, row) {
                 this.$router.push({path: '/addNews', query: {id: row.news_id}});
