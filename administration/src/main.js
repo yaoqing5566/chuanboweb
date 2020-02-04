@@ -14,8 +14,14 @@ global.$_get=get;
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
+    // 强制给index.html 加上时间戳
+    if (document.URL.indexOf('index.html?t=') < 0) {
+        let timestamp = (new Date()).valueOf()
+        window.location.href = 'index.html?t=' + timestamp + '#' + to.fullPath
+    }
     let ms_user =JSON.parse(localStorage.getItem('ms_user'));
     let role='';
+
     if(ms_user){
         role=ms_user.name;
     }
